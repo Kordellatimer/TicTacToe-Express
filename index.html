@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Express Tic Tac Toe</title>
+
+    <style media="screen">
+
+      .box, .value {
+        height: 150px;
+        width: 33%;
+        border: solid black 1px;
+        float: left;
+        font-size: 5em;
+        text-align: center;
+      }
+
+      .main {
+        height: 450px;
+        width: 60%;
+        margin: auto;
+      }
+
+    </style>
+
+  </head>
+  <body>
+    <h1>Tic Tac Toe</h1>
+    <div class="main">
+      <div><span class="box" id="box1"></span></div>
+
+      <div><span class="box" id="box2"></span></div>
+
+      <div><span class="box" id="box3"></span></div>
+
+      <div><span class="box" id="box4"></span></div>
+
+      <div><span class="box" id="box5"></span></div>
+
+      <div><span class="box" id="box6"></span></div>
+
+      <div><span class="box" id="box7"></span></div>
+
+      <div><span class="box" id="box8"></span></div>
+
+      <div><span class="box" id="box9"></span></div>
+
+    </div>
+
+
+
+    <script type="text/javascript">
+
+      let move = "X"
+
+      var divBox = document.getElementsByClassName("box")
+      console.log(box1)
+
+      Array.from(divBox).forEach((element) => {
+        element.addEventListener('click', () => {
+          element.className = "value";
+          console.log("click event is working")
+          console.log(element)
+          element.append(move)
+          changeTurn()
+          checkWinner()
+          });
+      });
+
+      function checkWinner(){
+
+        var box1Class = document.getElementById("box1").className
+        var box5Class = document.getElementById("box5").className
+        var box9Class = document.getElementById("box9").className
+
+        var box1 = document.getElementById("box1").innerText
+        var box2 = document.getElementById("box2").innerText
+        var box3 = document.getElementById("box3").innerText
+        var box4 = document.getElementById("box4").innerText
+        var box5 = document.getElementById("box5").innerText
+        var box6 = document.getElementById("box6").innerText
+        var box7 = document.getElementById("box7").innerText
+        var box8 = document.getElementById("box8").innerText
+        var box9 = document.getElementById("box9").innerText
+
+        console.log(box1)
+
+         if (box1Class == "value" && box1 == box2 && box1 == box3
+              || box1Class == "value" && box1 == box4 && box1 == box7
+              || box1Class == "value" && box1 == box5 && box1 == box9
+              || box5Class == "value" && box2 == box5 && box2 == box8
+              || box5Class == "value" && box3 == box5 && box3 == box7
+              || box9Class == "value" && box3 == box6 && box3 === box9
+              || box5Class == "value" && box4 == box5 && box4 == box6
+              || box9Class == "value"  && box7 == box8 && box7 == box9) {
+           alert("Game OVER!!")
+         }
+      }
+
+
+      function changeTurn(){
+        if (move == "X") {
+          move = "O"
+        }else if (move == "O") {
+          move = "X"
+        }
+
+      }
+
+    </script>
+
+  </body>
+</html>
